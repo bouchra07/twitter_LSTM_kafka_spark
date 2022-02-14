@@ -1,6 +1,5 @@
 import os, string
 import numpy as np
-
 import pickle
 import keras.models
 from keras.models import Sequential
@@ -10,7 +9,6 @@ from keras.layers import Input, Dense, Embedding, SpatialDropout1D, add, concate
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from .CleanText import CleanText
 from keras.preprocessing.sequence import pad_sequences
-
 import re
 from nltk.corpus import stopwords
 
@@ -48,3 +46,4 @@ class MulticlassComplainInference:
                   'Delay and Customer Service', 'Seating Preferences', 'Reservation Issue', 'Customer Experience']
         print(pred, labels[np.argmax(pred)])
         return labels[np.argmax(pred)]
+
