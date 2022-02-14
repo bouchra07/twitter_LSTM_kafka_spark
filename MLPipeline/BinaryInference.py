@@ -5,11 +5,9 @@ from keras.models import Sequential
 from keras.layers.recurrent import LSTM
 from keras.layers import Input, Dense, Embedding, SpatialDropout1D, add, concatenate
 import numpy as np
-
 from .CleanText import CleanText
 
 class BinaryInference:
-
       def __init__(self):
           self.load_models()
           self.clean_text = CleanText()
@@ -27,7 +25,6 @@ class BinaryInference:
           model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
           return model
-
 
       def load_models(self):
           with open('../models/model_binaryclass/tokenizerBinaryClassification.pickle', 'rb') as handle:
