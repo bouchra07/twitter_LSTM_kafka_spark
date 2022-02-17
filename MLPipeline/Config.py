@@ -10,3 +10,7 @@ class Config:
     consumer_secret = "FRjWoFHTSxWKIYfRZCsifD6jRJRjTJBunet8JUj4pJOiZp2y4x"
 
     TRACK_TWEET = "project_test"
+    SINK_TOPIC = "sink-data"
+
+    BOOTSTRAP_SERVER = "localhost:29092"
+    URL = "http://172.17.84.14:5000/"

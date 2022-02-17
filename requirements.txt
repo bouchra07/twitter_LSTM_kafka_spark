@@ -1,0 +1,9 @@
+findspark~=2.0.1
+pyspark~=3.2.1
+nltk~=3.7
+tweepy~=3.10.0
+Flask~=2.0.2
+requests~=2.27.1
+numpy~=1.22.2
+keras~=2.8.0
+spacy~=3.2.2

@@ -1,4 +1,6 @@
 import re
+# import nltk
+# nltk.download('stopwords')
 from nltk import PorterStemmer
 import string
 
@@ -19,6 +21,17 @@ class CleanText:
                         word not in stopwords.words('english')])  # stem & remove stop words
         txt = ''.join([i for i in txt if not i.isdigit()]).strip()  # remove digits ()
         return txt
+
+    def camel_case_split(self, str):
+        words = [[str[0]]]
+
+        for c in str[1:]:
+            if words[-1][-1].islower() and c.isupper():
+                words.append(list(c))
+            else:
+                words[-1].append(c)
+
+        return " ".join([''.join(word) for word in words])
 
     def clean_text_NER(self, txt):
 

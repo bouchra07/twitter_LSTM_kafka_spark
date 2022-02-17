@@ -23,22 +23,20 @@ class BinaryInference:
           model.add(LSTM(lstm_out, dropout=0.2, recurrent_dropout=0.2))
           model.add(Dense(2,activation='softmax'))
           model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
           return model
 
       def load_models(self):
-          with open('../models/model_binaryclass/tokenizerBinaryClassification.pickle', 'rb') as handle:
+          with open('./models/model_binaryclass/tokenizerBinaryClassification.pickle', 'rb') as handle:
               self.tokenizer = pickle.load(handle)
 
           self.model = self.get_model()
-          self.model.load_weights("../models/model_binaryclass/binaryClassificationModel.h5")
-
+          self.model.load_weights("./models/model_binaryclass/binaryClassificationModel.h5")
 
       def predict_complaint(self, text):
 
           text = self.clean_text.clean_text(text)
           twt = self.tokenizer.texts_to_sequences([text])
-          twt = pad_sequences(twt, maxlen=21, dtype='èint32', value=0)
+          twt = pad_sequences(twt, maxlen=21, dtype='int32', value=0)
           complain = self.model.predict(twt,batch_size=1,verbose = 0)[0]
           if(np.argmax(complain) == 0):
               print("negative")

@@ -12,13 +12,13 @@ from keras.preprocessing.sequence import pad_sequences
 import re
 from nltk.corpus import stopwords
 
-class MulticlassComplainInference:
+class MulticlassComplainInference():
+    MAX_NB_WORDS = 50000
+    MAX_SEQUENCE_LENGTH = 250
+    EMBEDDING_DIM = 100
 
     def __init__(self):
         self.load_models()
-        self.MAX_NB_WORDS = 50000
-        self.MAX_SEQUENCE_LENGTH = 250
-        self.EMBEDDING_DIM = 100
         self.clean_text = CleanText()
 
     def get_model(self, input_len):
@@ -31,11 +31,11 @@ class MulticlassComplainInference:
         return model
 
     def load_models(self):
-        with open('../model_multiclass/tokenizerMulticlassComplaintClassification.pickle', 'rb') as handle:
+        with open('./models/model_multiclass/tokenizerMulticlassComplaintClassification.pickle', 'rb') as handle:
             self.tokenizer = pickle.load(handle)
 
         self.model = self.get_model(self.MAX_SEQUENCE_LENGTH)
-        self.model.load_weights("../model_multiclass/multiclassComplaintClassifier.h5")
+        self.model.load_weights("./models/model_multiclass/multiclassComplaintClassifier.h5")
 
     def predict_complaint(self, text):
         new_tweet = self.clean_text.clean_text(text)
