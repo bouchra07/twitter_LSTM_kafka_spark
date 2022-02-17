@@ -15,9 +15,9 @@ class ReplyTweet(Config):
 
     def sendReply(self, tweetId, user, text):
         try:
-            text = user + " " + text
+            text = "@" + user + " " + text
             print(text)
-            self.api.update_status("blaaah test", int(tweetId))
+            self.api.update_status(text, int(tweetId))
             return True
         except Exception as e:
             print(e)
